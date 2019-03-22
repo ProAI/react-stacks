@@ -1,0 +1,53 @@
+{
+  "name": "react-stacks",
+  "version": "0.1.0",
+  "description": "Stacks layout for React.js alert, notification and toast components.",
+  "author": "Markus Wetzel <markuswetzel@gmx.net>",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "stacks",
+    "placement",
+    "alerts",
+    "notifications",
+    "toasts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ProAI/react-stacks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ProAI/react-stacks/issues"
+  },
+  "main": "dist/react-stacks.cjs.js",
+  "module": "dist/react-stacks.esm.js",
+  "scripts": {
+    "build": "package build",
+    "dev": "package dev",
+    "lint": "package lint",
+    "format": "package format",
+    "prepublishOnly": "package prepublish"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "prop-types": "^15.7.2"
+  },
+  "devDependencies": {
+    "@proai/package": "0.1.0",
+    "react": "16.8.4"
+  },
+  "peerDependencies": {
+    "react": ">=16.8"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "package precommit"
+    }
+  },
+  "engines": {
+    "node": ">= 8",
+    "npm": ">= 5"
+  }
+}

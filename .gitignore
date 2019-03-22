@@ -1,0 +1,8 @@
+dist
+lib
+node_modules
+.DS_Store
+
+# Not needed for package development
+package-lock.json
+yarn.lock
