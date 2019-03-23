@@ -1,1 +1,1 @@
-module.exports = require('@proai/package/src/config/prettier');
+module.exports = require('packsy/prettier');

@@ -22,11 +22,11 @@
   "main": "dist/react-stacks.cjs.js",
   "module": "dist/react-stacks.esm.js",
   "scripts": {
-    "build": "package build",
-    "dev": "package dev",
-    "lint": "package lint",
-    "format": "package format",
-    "prepublishOnly": "package prepublish"
+    "build": "packsy build",
+    "dev": "packsy dev",
+    "lint": "packsy lint",
+    "format": "packsy format",
+    "prepublishOnly": "packsy prepublish"
   },
   "files": [
     "dist"
@@ -35,7 +35,7 @@
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@proai/package": "0.1.0",
+    "packsy": "0.1.1",
     "react": "16.8.4"
   },
   "peerDependencies": {
@@ -43,7 +43,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "package precommit"
+      "pre-commit": "packsy precommit"
     }
   },
   "engines": {
