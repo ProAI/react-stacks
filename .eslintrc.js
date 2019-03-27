@@ -1,1 +1,1 @@
-module.exports = require('packsy/eslint');
+module.exports = require('packsy/config-eslint');

@@ -1,1 +1,1 @@
-module.exports = require('packsy/prettier');
+module.exports = require('packsy/config-prettier');
