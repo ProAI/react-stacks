@@ -1,30 +1,30 @@
 {
   "dist/react-stacks.cjs.js": {
-    "bundled": 5706,
-    "minified": 3215,
-    "gzipped": 1303
+    "bundled": 5743,
+    "minified": 3253,
+    "gzipped": 1311
   },
   "dist/react-stacks.umd.min.js": {
-    "bundled": 17194,
-    "minified": 6915,
-    "gzipped": 2599
+    "bundled": 17253,
+    "minified": 6967,
+    "gzipped": 2610
   },
   "dist/react-stacks.umd.js": {
-    "bundled": 49594,
-    "minified": 16592,
-    "gzipped": 5291
+    "bundled": 49653,
+    "minified": 16644,
+    "gzipped": 5292
   },
   "dist/react-stacks.esm.js": {
-    "bundled": 5465,
-    "minified": 3018,
-    "gzipped": 1250,
+    "bundled": 5413,
+    "minified": 2975,
+    "gzipped": 1235,
     "treeshaked": {
       "rollup": {
         "code": 123,
         "import_statements": 47
       },
       "webpack": {
-        "code": 3454
+        "code": 1160
       }
     }
   }
