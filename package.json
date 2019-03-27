@@ -1,6 +1,6 @@
 {
   "name": "react-stacks",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Stacks layout for React.js alert, notification and toast components.",
   "author": "Markus Wetzel <markuswetzel@gmx.net>",
   "license": "MIT",
