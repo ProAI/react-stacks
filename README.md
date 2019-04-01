@@ -31,7 +31,7 @@ const stacks = {
     <div style={{ position: 'fixed', top: 0 }}>{children}</div>
   ),
   bottom: ({ children }) => (
-    <div style={{ position: 'fixed', bottom: 0, right: 0 }}>{children}</div>
+    <div style={{ position: 'fixed', bottom: 0, right: 0 }}>{children.reverse()}</div>
   ),
 };
 
