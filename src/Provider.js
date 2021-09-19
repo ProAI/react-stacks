@@ -14,14 +14,14 @@ let incrementalId = 0;
 
 function Provider({ autoDismiss, stacks: stacksConfig, children }) {
   const initialState = {};
-  Object.keys(stacksConfig).forEach(name => {
+  Object.keys(stacksConfig).forEach((name) => {
     initialState[name] = {};
   });
 
   const [stacks, setStacks] = useState(initialState);
 
   const destroy = (name, id) => {
-    setStacks(prevStacks => {
+    setStacks((prevStacks) => {
       const stack = { ...prevStacks[name] };
       const item = stack[id];
 
@@ -43,7 +43,7 @@ function Provider({ autoDismiss, stacks: stacksConfig, children }) {
       throw new Error(`Unknown stack "${name}"`);
     }
 
-    setStacks(prevStacks => {
+    setStacks((prevStacks) => {
       const stack = { ...prevStacks[name] };
       const item = { component, config };
 
@@ -68,8 +68,8 @@ function Provider({ autoDismiss, stacks: stacksConfig, children }) {
   };
 
   return (
-    <React.Fragment>
-      {Object.keys(stacks).map(name => {
+    <>
+      {Object.keys(stacks).map((name) => {
         const Stacks = stacksConfig[name];
 
         return (
@@ -101,7 +101,7 @@ function Provider({ autoDismiss, stacks: stacksConfig, children }) {
       <StacksContext.Provider value={{ push }}>
         {children}
       </StacksContext.Provider>
-    </React.Fragment>
+    </>
   );
 }
 
