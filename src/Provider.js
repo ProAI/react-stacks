@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState, useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import StacksContext from './StacksContext';
 import Timer from './Timer';
@@ -10,17 +10,22 @@ const propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-let incrementalId = 0;
-
 function Provider({ autoDismiss, stacks: stacksConfig, children }) {
-  const initialState = {};
-  Object.keys(stacksConfig).forEach((name) => {
-    initialState[name] = {};
-  });
+  const incrementalId = useRef(0);
+
+  const initialState = useMemo(() => {
+    const state = {};
+
+    Object.keys(stacksConfig).forEach((name) => {
+      state[name] = {};
+    });
+
+    return state;
+  }, []);
 
   const [stacks, setStacks] = useState(initialState);
 
-  const destroy = (name, id) => {
+  const destroy = useCallback((name, id) => {
     setStacks((prevStacks) => {
       const stack = { ...prevStacks[name] };
       const item = stack[id];
@@ -36,9 +41,9 @@ function Provider({ autoDismiss, stacks: stacksConfig, children }) {
         [name]: stack,
       };
     });
-  };
+  }, []);
 
-  const push = (name, component, config) => {
+  const push = useCallback((name, component, config) => {
     if (!stacks[name]) {
       throw new Error(`Unknown stack "${name}"`);
     }
@@ -48,9 +53,9 @@ function Provider({ autoDismiss, stacks: stacksConfig, children }) {
       const item = { component, config };
 
       // increment identifier
-      incrementalId += 1;
+      incrementalId.current += 1;
 
-      const id = incrementalId;
+      const id = incrementalId.current;
 
       stack[id] = item;
 
@@ -65,7 +70,7 @@ function Provider({ autoDismiss, stacks: stacksConfig, children }) {
         [name]: stack,
       };
     });
-  };
+  }, []);
 
   return (
     <>
