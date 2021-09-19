@@ -29,24 +29,24 @@
     }
   },
   "react-stacks.cjs.js": {
-    "bundled": 7370,
-    "minified": 4388,
-    "gzipped": 1682
+    "bundled": 7506,
+    "minified": 4495,
+    "gzipped": 1721
   },
   "react-stacks.umd.min.js": {
-    "bundled": 16533,
-    "minified": 7660,
-    "gzipped": 2983
+    "bundled": 16675,
+    "minified": 7775,
+    "gzipped": 3020
   },
   "react-stacks.umd.js": {
-    "bundled": 45938,
-    "minified": 15062,
-    "gzipped": 5289
+    "bundled": 46080,
+    "minified": 15177,
+    "gzipped": 5329
   },
   "react-stacks.esm.js": {
-    "bundled": 6839,
-    "minified": 3958,
-    "gzipped": 1586,
+    "bundled": 6981,
+    "minified": 4068,
+    "gzipped": 1630,
     "treeshaked": {
       "rollup": {
         "code": 98,
