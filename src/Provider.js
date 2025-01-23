@@ -1,15 +1,8 @@
 import React, { useRef, useState, useMemo, useCallback } from 'react';
-import PropTypes from 'prop-types';
 import StacksContext from './StacksContext';
 import Timer from './Timer';
 
-const propTypes = {
-  autoDismiss: PropTypes.number.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  stacks: PropTypes.object.isRequired,
-  children: PropTypes.node.isRequired,
-};
-
+// eslint-disable-next-line react/prop-types
 function Provider({ autoDismiss, stacks: stacksConfig, children }) {
   const incrementalId = useRef(0);
 
@@ -43,34 +36,39 @@ function Provider({ autoDismiss, stacks: stacksConfig, children }) {
     });
   }, []);
 
-  const push = useCallback((name, component, config) => {
-    if (!stacks[name]) {
-      throw new Error(`Unknown stack "${name}"`);
-    }
+  const context = useMemo(
+    () => ({
+      push: (name, component, config) => {
+        if (!stacks[name]) {
+          throw new Error(`Unknown stack "${name}"`);
+        }
 
-    setStacks((prevStacks) => {
-      const stack = { ...prevStacks[name] };
-      const item = { component, config };
+        setStacks((prevStacks) => {
+          const stack = { ...prevStacks[name] };
+          const item = { component, config };
 
-      // increment identifier
-      incrementalId.current += 1;
+          // increment identifier
+          incrementalId.current += 1;
 
-      const id = incrementalId.current;
+          const id = incrementalId.current;
 
-      stack[id] = item;
+          stack[id] = item;
 
-      if (autoDismiss) {
-        stack[id].timer = new Timer(() => {
-          destroy(name, id);
-        }, autoDismiss);
-      }
+          if (autoDismiss) {
+            stack[id].timer = new Timer(() => {
+              destroy(name, id);
+            }, autoDismiss);
+          }
 
-      return {
-        ...prevStacks,
-        [name]: stack,
-      };
-    });
-  }, []);
+          return {
+            ...prevStacks,
+            [name]: stack,
+          };
+        });
+      },
+    }),
+    [],
+  );
 
   return (
     <>
@@ -103,13 +101,11 @@ function Provider({ autoDismiss, stacks: stacksConfig, children }) {
           </Stacks>
         );
       })}
-      <StacksContext.Provider value={{ push }}>
+      <StacksContext.Provider value={context}>
         {children}
       </StacksContext.Provider>
     </>
   );
 }
-
-Provider.propTypes = propTypes;
 
 export default Provider;
