@@ -1,4 +1,5 @@
-import Provider from './Provider';
+import StacksContext from './StacksContext';
+import StacksProvider from './StacksProvider';
 import useStack from './useStack';
 
-export { Provider, useStack };
+export { StacksContext, StacksProvider, useStack };

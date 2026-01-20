@@ -3,7 +3,7 @@ import StacksContext from './StacksContext';
 import Timer from './Timer';
 
 // eslint-disable-next-line react/prop-types
-function Provider({ autoDismiss, stacks: stacksConfig, children }) {
+function StacksProvider({ autoDismiss, stacks: stacksConfig, children }) {
   const incrementalId = useRef(0);
 
   const initialState = useMemo(() => {
@@ -38,14 +38,14 @@ function Provider({ autoDismiss, stacks: stacksConfig, children }) {
 
   const context = useMemo(
     () => ({
-      push: (name, component, config) => {
+      push: (name, component) => {
         if (!stacks[name]) {
           throw new Error(`Unknown stack "${name}"`);
         }
 
         setStacks((prevStacks) => {
           const stack = { ...prevStacks[name] };
-          const item = { component, config };
+          const item = { component };
 
           // increment identifier
           incrementalId.current += 1;
@@ -108,4 +108,4 @@ function Provider({ autoDismiss, stacks: stacksConfig, children }) {
   );
 }
 
-export default Provider;
+export default StacksProvider;
