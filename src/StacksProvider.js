@@ -72,6 +72,9 @@ function StacksProvider({ autoDismiss, stacks: stacksConfig, children }) {
 
   return (
     <>
+      <StacksContext.Provider value={context}>
+        {children}
+      </StacksContext.Provider>
       {Object.keys(stacks).map((name) => {
         const Stacks = stacksConfig[name];
 
@@ -101,9 +104,6 @@ function StacksProvider({ autoDismiss, stacks: stacksConfig, children }) {
           </Stacks>
         );
       })}
-      <StacksContext.Provider value={context}>
-        {children}
-      </StacksContext.Provider>
     </>
   );
 }
